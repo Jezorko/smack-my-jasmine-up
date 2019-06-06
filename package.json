@@ -1,6 +1,6 @@
 {
   "name": "smack-my-jasmine-up",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A hacky code that allows getting test case names from Jest / Jasmine tests.",
   "keywords": [
     "hack",
