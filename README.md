@@ -25,7 +25,7 @@ First, add the project as a test dependency in `package.json` file:
 
 ```json
 "devDependencies": {
-    "smack-my-jasmine-up": "^0.0.1"
+    "smack-my-jasmine-up": "^0.0.2"
     ...
 }
 ```
