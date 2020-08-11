@@ -3,22 +3,31 @@ let CURRENT_SPEC = undefined;
 /** To make "enhancements" conflicts less likely to occur. */
 const ENHANCED_SPEC_PROPERTY_NAME = 'JASMINE-SMACKER-ENHANCED';
 
-if (it === undefined) throw new Error('cannot smack Jasmine if not in a test environment');
-else if (it[ENHANCED_SPEC_PROPERTY_NAME] !== true) {
-    it[ENHANCED_SPEC_PROPERTY_NAME] = true;
-    const oldIt = it;
-    it = Object.assign((name, closure) => {
-        const spec = oldIt(name, closure);
-        const {description} = spec;
-        Object.defineProperty(spec, 'description', {
-            get() {
-                CURRENT_SPEC = this;
-                return description;
-            }
-        });
-        return spec;
-    }, oldIt);
-}
+[
+    {testMethodToEnhance: it, setter: (newValue) => it = newValue},
+    {testMethodToEnhance: fit, setter: (newValue) => fit = newValue}
+]
+.forEach(testMethodToEnhanceAndSetter => {
+    const testMethodToEnhance = testMethodToEnhanceAndSetter.testMethodToEnhance;
+    if (testMethodToEnhance === undefined) throw new Error('cannot smack Jasmine if not in a test environment');
+    else if (testMethodToEnhance[ENHANCED_SPEC_PROPERTY_NAME] !== true) {
+        testMethodToEnhance[ENHANCED_SPEC_PROPERTY_NAME] = true;
+        const oldTestMethodToEnhance = testMethodToEnhance;
+        testMethodToEnhanceAndSetter.setter(
+            Object.assign((name, closure) => {
+                const spec = oldTestMethodToEnhance(name, closure);
+                const {description} = spec;
+                Object.defineProperty(spec, 'description', {
+                    get() {
+                        CURRENT_SPEC = this;
+                        return description;
+                    }
+                });
+                return spec;
+            }, oldTestMethodToEnhance)
+        );
+    }
+});
 
 class JasmineSmacker {
 
