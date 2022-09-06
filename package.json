@@ -18,7 +18,7 @@
     "url": "https://github.com/Jezorko/smack-my-jasmine-up"
   },
   "devDependencies": {
-    "jest": "^29.0.2"
+    "jest": "^26.6.3"
   },
   "jest": {
     "testEnvironment": "node",
