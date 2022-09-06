@@ -1,5 +1,7 @@
 [![License: WTFPL](https://img.shields.io/badge/License-WTFPL-red.svg)](http://www.wtfpl.net/txt/copying/)
-[![Build status](https://travis-ci.org/Jezorko/smack-my-jasmine-up.svg?branch=master)](https://travis-ci.org/Jezorko/smack-my-jasmine-up)
+[![Deployment Status](https://img.shields.io/github/workflow/status/Jezorko/smack-my-jasmine-up/Deploy%20to%20NPM?label=Deployment&logo=npm&logoColor=red)](https://github.com/Jezorko/smack-my-jasmine-up/actions/workflows/deploy.yml)
+[![Tests](https://img.shields.io/github/workflow/status/Jezorko/smack-my-jasmine-up/Run%20all%20tests?label=Tests&logo=jest&logoColor=red)](https://github.com/Jezorko/smack-my-jasmine-up/actions/workflows/test.yml)
+[![Most recent version in NPM](https://img.shields.io/npm/v/smack-my-jasmine-up.svg)](https://www.npmjs.com/package/smack-my-jasmine-up)
 
 ## What is this?
 This is a very hacky solution to [this issue](https://github.com/jasmine/jasmine/issues/611) on Jasmine's GitHub.
@@ -21,11 +23,11 @@ Please use it with care and good intentions.
 ## How do I use it?
 
 ### Unit testing
-First, add the project as a test dependency in `package.json` file:
+First, add the project as a test dependency in `package.json` file (see most recent version in [npm](https://www.npmjs.com/package/smack-my-jasmine-up)):
 
 ```json
 "devDependencies": {
-    "smack-my-jasmine-up": "^0.0.5"
+    "smack-my-jasmine-up": "^version"
     ...
 }
 ```
