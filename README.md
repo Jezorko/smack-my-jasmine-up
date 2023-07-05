@@ -1,6 +1,6 @@
 [![License: WTFPL](https://img.shields.io/badge/License-WTFPL-red.svg)](http://www.wtfpl.net/txt/copying/)
-[![Deployment Status](https://img.shields.io/github/workflow/status/Jezorko/smack-my-jasmine-up/Deploy%20to%20NPM?label=Deployment&logo=npm&logoColor=red)](https://github.com/Jezorko/smack-my-jasmine-up/actions/workflows/deploy.yml)
-[![Tests](https://img.shields.io/github/workflow/status/Jezorko/smack-my-jasmine-up/Run%20all%20tests?label=Tests&logo=jest&logoColor=red)](https://github.com/Jezorko/smack-my-jasmine-up/actions/workflows/test.yml)
+[![Deployment Status](https://img.shields.io/github/actions/workflow/status/Jezorko/smack-my-jasmine-up/deploy.yml?branch=master&label=Deployment&logo=npm&logoColor=red)](https://github.com/Jezorko/smack-my-jasmine-up/actions/workflows/deploy.yml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/Jezorko/smack-my-jasmine-up/test.yml?branch=master&label=Tests&logo=jest&logoColor=red)](https://github.com/Jezorko/smack-my-jasmine-up/actions/workflows/test.yml)
 [![Most recent version in NPM](https://img.shields.io/npm/v/smack-my-jasmine-up.svg)](https://www.npmjs.com/package/smack-my-jasmine-up)
 
 ## What is this?
