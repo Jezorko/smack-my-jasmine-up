@@ -1,26 +1,54 @@
-let CURRENT_TEST_NAME = undefined;
+let CURRENT_TEST_DEFINITIONS = {
+    currentValue: [],
+    pushValue: (newValue) => CURRENT_TEST_DEFINITIONS.currentValue.push(newValue),
+    popValue: () => CURRENT_TEST_DEFINITIONS.currentValue.pop()
+};
+let CURRENT_TEST_NAME = {
+    currentValue: undefined,
+    pushValue: (newValue) => CURRENT_TEST_NAME.currentValue = newValue,
+    popValue: () => CURRENT_TEST_NAME.currentValue = undefined
+};
 
 [
-    {testMethodToEnhance: it, setter: (newValue) => it = newValue},
-    {testMethodToEnhance: fit, setter: (newValue) => fit = newValue}
-]
-    .forEach(testMethodToEnhanceAndSetter => {
-        const testMethodToEnhance = testMethodToEnhanceAndSetter.testMethodToEnhance;
-        if (testMethodToEnhance === undefined) throw new Error('cannot smack Jasmine if not in a test environment');
+    {
+        testMethodToEnhance: describe,
+        setTestMethod: (newValue) => describe = newValue,
+        globalProp: CURRENT_TEST_DEFINITIONS
+    },
+    {
+        testMethodToEnhance: fdescribe,
+        setTestMethod: (newValue) => fdescribe = newValue,
+        globalProp: CURRENT_TEST_DEFINITIONS
+    },
+    {
+        testMethodToEnhance: it,
+        setTestMethod: (newValue) => it = newValue,
+        globalProp: CURRENT_TEST_NAME
+    },
+    {
+        testMethodToEnhance: fit,
+        setTestMethod: (newValue) => fit = newValue,
+        globalProp: CURRENT_TEST_NAME
+    }
+].forEach(methodConfiguration => {
+    const testMethodToEnhance = methodConfiguration.testMethodToEnhance;
+    if (testMethodToEnhance === undefined) throw new Error('cannot smack Jasmine if not in a test environment');
 
-        const oldTestMethodToEnhance = testMethodToEnhance;
-        const newTestMethod = Object.assign(
-            (name, assertion, timeout) => {
-                oldTestMethodToEnhance(name, async () => {
-                    CURRENT_TEST_NAME = name;
-                    await assertion();
-                    CURRENT_TEST_NAME = undefined;
-                }, timeout);
-            },
-            oldTestMethodToEnhance
-        )
-        testMethodToEnhanceAndSetter.setter(newTestMethod);
-    });
+    const oldTestMethodToEnhance = testMethodToEnhance;
+    const globalProp = methodConfiguration.globalProp;
+    const newTestMethod = Object.assign(
+        (name, closure, timeout) => {
+            oldTestMethodToEnhance(name, () => {
+                globalProp.pushValue(name);
+                Promise.resolve(closure()).then(() => {
+                    globalProp.popValue();
+                });
+            }, timeout);
+        },
+        oldTestMethodToEnhance
+    )
+    methodConfiguration.setTestMethod(newTestMethod);
+});
 
 class JasmineSmacker {
 
@@ -29,8 +57,15 @@ class JasmineSmacker {
      *                             otherwise undefined
      */
     static getCurrentTestName() {
-        // our "enhancement" should have set this by now
-        return CURRENT_TEST_NAME;
+        return CURRENT_TEST_NAME.currentValue;
+    }
+
+    /**
+     * @returns {string[]|undefined} current test definition chain names if executed inside a define block,
+     *                               otherwise undefined
+     */
+    static getCurrentTestDefinitionName() {
+        return CURRENT_TEST_DEFINITIONS.currentValue;
     }
 
 }

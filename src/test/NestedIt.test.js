@@ -1,5 +1,6 @@
 const assert = require('assert');
 const strictEqual = assert.strictEqual;
+const deepEqual = assert.deepEqual;
 const JasmineSmacker = require('../main');
 
 describe('getting test name in nested it() test', () => {
@@ -9,6 +10,11 @@ describe('getting test name in nested it() test', () => {
         it('should get test name in nested it() test', () => {
             strictEqual(JasmineSmacker.getCurrentTestName(), 'should get test name in nested it() test');
         });
+
+        deepEqual(JasmineSmacker.getCurrentTestDefinitionName(), [
+            'getting test name in nested it() test',
+            'nested it()'
+        ]);
 
     });
 

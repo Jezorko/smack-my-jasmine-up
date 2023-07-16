@@ -20,6 +20,10 @@ Please use it with care and good intentions.
 
 ## Changelog
 
+### 0.1.1
+
+ * added support for fetching test definition names
+
 ### 0.1.0
 
  * upgraded for Jest ^29.6.1 and Jasmine ^5.0.2
