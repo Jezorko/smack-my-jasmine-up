@@ -13,12 +13,21 @@ Please use it with care and good intentions.
 
 ## How does it work?
 
-1. `it` is overriden like in [Pyrolistical's comment](https://github.com/jasmine/jasmine/issues/611#issuecomment-363936493)
-2. spec's description getter is overriden to assign the spec to an outside scope
-3. when getCurrentSpec is called from within a test case, we try running it of the current's environment
-4. this throws an error because we are already in a test case
-5. spec's description is used to build the error message - our overridden getter is called
-6. finally, current spec is returned from the outside context
+1. `it` and `fit` are overriden like in [Pyrolistical's comment](https://github.com/jasmine/jasmine/issues/611#issuecomment-363936493)
+2. spec's name is assigned to a global variable
+3. assertion closure runs
+4. spec's name is unassigned
+
+## Changelog
+
+### 0.1.0
+
+ * upgraded for Jest ^29.6.1 and Jasmine ^5.0.2
+ * `JasmineSmacker.getCurrentSpec()` is no longer supported
+
+### 0.0.x
+
+ * initial implementation, worked with Jest up to ^26.6.3
 
 ## How do I use it?
 
