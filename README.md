@@ -18,21 +18,6 @@ Please use it with care and good intentions.
 3. assertion closure runs
 4. spec's name is unassigned
 
-## Changelog
-
-### 0.1.1
-
- * added support for fetching test definition names
-
-### 0.1.0
-
- * upgraded for Jest ^29.6.1 and Jasmine ^5.0.2
- * `JasmineSmacker.getCurrentSpec()` is no longer supported
-
-### 0.0.x
-
- * initial implementation, worked with Jest up to ^26.6.3
-
 ## How do I use it?
 
 ### Unit testing
@@ -63,3 +48,23 @@ if (currentTestName !== undefined) {
 ## Contribution guidelines
 All I ask for is tests and documentation in form of JS docstrings.
 Feel free to submit a PR if you feel like it.
+
+## Changelog
+
+### 0.2.0
+
+* renamed "definitions" to "descriptions", wops
+* moved changelog to the bottom of README
+
+### 0.1.1
+
+* added support for fetching test ~~definition~~ names
+
+### 0.1.0
+
+* upgraded for Jest ^29.6.1 and Jasmine ^5.0.2
+* `JasmineSmacker.getCurrentSpec()` is no longer supported
+
+### 0.0.x
+
+* initial implementation, worked with Jest up to ^26.6.3

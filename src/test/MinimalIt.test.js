@@ -9,7 +9,7 @@ describe('getting test name in it() test', () => {
     // we're not in a test yet!
     strictEqual(JasmineSmacker.getCurrentTestName(), undefined);
 
-    deepEqual(JasmineSmacker.getCurrentTestDefinitionNames(), ['getting test name in it() test']);
+    deepEqual(JasmineSmacker.getCurrentTestDescriptionNames(), ['getting test name in it() test']);
 
     it('should get test name in it() test', () => {
         strictEqual(JasmineSmacker.getCurrentTestName(), 'should get test name in it() test');

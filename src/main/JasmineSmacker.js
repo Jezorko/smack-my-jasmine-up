@@ -1,7 +1,7 @@
-let CURRENT_TEST_DEFINITIONS = {
+let CURRENT_TEST_DESCRIPTIONS = {
     currentValue: [],
-    pushValue: (newValue) => CURRENT_TEST_DEFINITIONS.currentValue.push(newValue),
-    popValue: () => CURRENT_TEST_DEFINITIONS.currentValue.pop()
+    pushValue: (newValue) => CURRENT_TEST_DESCRIPTIONS.currentValue.push(newValue),
+    popValue: () => CURRENT_TEST_DESCRIPTIONS.currentValue.pop()
 };
 let CURRENT_TEST_NAME = {
     currentValue: undefined,
@@ -13,12 +13,12 @@ let CURRENT_TEST_NAME = {
     {
         testMethodToEnhance: global.describe,
         setTestMethod: (newValue) => global.describe = newValue,
-        globalProp: CURRENT_TEST_DEFINITIONS
+        globalProp: CURRENT_TEST_DESCRIPTIONS
     },
     {
         testMethodToEnhance: global.fdescribe,
         setTestMethod: (newValue) => global.fdescribe = newValue,
-        globalProp: CURRENT_TEST_DEFINITIONS
+        globalProp: CURRENT_TEST_DESCRIPTIONS
     },
     {
         testMethodToEnhance: global.it,
@@ -61,11 +61,12 @@ class JasmineSmacker {
     }
 
     /**
-     * @returns {string[]|undefined} current test definition chain names if executed inside a define block,
+     * @returns {string[]|undefined} current test description names if executed inside a define block,
+     *                               ordered by nesting level,
      *                               otherwise undefined
      */
-    static getCurrentTestDefinitionNames() {
-        return CURRENT_TEST_DEFINITIONS.currentValue;
+    static getCurrentTestDescriptionNames() {
+        return CURRENT_TEST_DESCRIPTIONS.currentValue;
     }
 
 }
