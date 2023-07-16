@@ -11,23 +11,23 @@ let CURRENT_TEST_NAME = {
 
 [
     {
-        testMethodToEnhance: describe,
-        setTestMethod: (newValue) => describe = newValue,
+        testMethodToEnhance: global.describe,
+        setTestMethod: (newValue) => global.describe = newValue,
         globalProp: CURRENT_TEST_DEFINITIONS
     },
     {
-        testMethodToEnhance: fdescribe,
-        setTestMethod: (newValue) => fdescribe = newValue,
+        testMethodToEnhance: global.fdescribe,
+        setTestMethod: (newValue) => global.fdescribe = newValue,
         globalProp: CURRENT_TEST_DEFINITIONS
     },
     {
-        testMethodToEnhance: it,
-        setTestMethod: (newValue) => it = newValue,
+        testMethodToEnhance: global.it,
+        setTestMethod: (newValue) => global.it = newValue,
         globalProp: CURRENT_TEST_NAME
     },
     {
-        testMethodToEnhance: fit,
-        setTestMethod: (newValue) => fit = newValue,
+        testMethodToEnhance: global.fit,
+        setTestMethod: (newValue) => global.fit = newValue,
         globalProp: CURRENT_TEST_NAME
     }
 ].forEach(methodConfiguration => {
@@ -64,7 +64,7 @@ class JasmineSmacker {
      * @returns {string[]|undefined} current test definition chain names if executed inside a define block,
      *                               otherwise undefined
      */
-    static getCurrentTestDefinitionName() {
+    static getCurrentTestDefinitionNames() {
         return CURRENT_TEST_DEFINITIONS.currentValue;
     }
 

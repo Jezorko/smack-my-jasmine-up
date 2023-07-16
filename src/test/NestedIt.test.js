@@ -11,7 +11,7 @@ describe('getting test name in nested it() test', () => {
             strictEqual(JasmineSmacker.getCurrentTestName(), 'should get test name in nested it() test');
         });
 
-        deepEqual(JasmineSmacker.getCurrentTestDefinitionName(), [
+        deepEqual(JasmineSmacker.getCurrentTestDefinitionNames(), [
             'getting test name in nested it() test',
             'nested it()'
         ]);
