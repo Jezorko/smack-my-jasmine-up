@@ -1,6 +1,6 @@
 {
   "name": "smack-my-jasmine-up",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A hacky code that allows getting test case names from Jest / Jasmine tests.",
   "keywords": [
     "hack",
@@ -18,8 +18,8 @@
     "url": "https://github.com/Jezorko/smack-my-jasmine-up"
   },
   "devDependencies": {
-    "jest": "^29.6.1",
-    "@types/jasmine": "^4.3.5"
+    "jest": "^29.7.0",
+    "@types/jasmine": "^5.1.2"
   },
   "jest": {
     "testEnvironment": "node",
